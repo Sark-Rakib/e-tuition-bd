@@ -48,14 +48,14 @@ const Navbar = () => {
               {user ? <NavLink to="/tuition">Tuitions</NavLink> : ""}
               {user ? <NavLink to="/tutors">Tutors</NavLink> : ""}
               {user ? (
-                <Link className="btn bg-[#CAEB66] mr-2" to="/add-tuition">
+                <Link className="btn btn-primary mr-2" to="/add-tuition">
                   Add Tuition
                 </Link>
               ) : (
                 ""
               )}
               {user ? (
-                <Link className="btn bg-[#CAEB66] mr-2" to="/add-tutors">
+                <Link className="btn btn-primary mr-2" to="/add-tutors">
                   Add Tutors
                 </Link>
               ) : (
@@ -78,7 +78,7 @@ const Navbar = () => {
         <div className="navbar-end">
           {user ? (
             <Link
-              className="navbar-center hidden md:flex btn bg-[#CAEB66] mr-2"
+              className="navbar-center hidden md:flex btn btn-primary mr-2"
               to="/add-tuition"
             >
               Add Tuition
@@ -88,7 +88,7 @@ const Navbar = () => {
           )}
           {user ? (
             <Link
-              className="navbar-center hidden md:flex btn bg-[#CAEB66] mr-2"
+              className="navbar-center hidden md:flex btn btn-primary mr-2"
               to="add-tutors"
             >
               Add Tutors
@@ -97,11 +97,11 @@ const Navbar = () => {
             ""
           )}
           {user ? (
-            <button onClick={handleLogOut} className="btn bg-[#CAEB66]">
+            <button onClick={handleLogOut} className="btn btn-primary">
               Logout
             </button>
           ) : (
-            <Link to="/login" className="btn bg-[#CAEB66]">
+            <Link to="/login" className="btn btn-primary">
               Login
             </Link>
           )}
