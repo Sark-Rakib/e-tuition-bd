@@ -31,7 +31,7 @@ const Login = () => {
   return (
     <div className="space-y-2">
       <h1 className="font-bold text-4xl">Welcome Back</h1>
-      <p>Login with ZapShift</p>
+      <p>Login with e-Tuition-Bd</p>
       <form onSubmit={handleSubmit(handleLogin)}>
         <fieldset className="fieldset">
           <label className="label">Email</label>

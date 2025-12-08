@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router";
-// import logo from "../assets/Logos/logo.png";
+import Logo from "../assets/e-tuition-bd.png";
 // import "./Navbar.css";
 import userAuth from "../Hooks/useAuth";
 
@@ -43,48 +43,55 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               <NavLink to="/">Home</NavLink>
-              <NavLink to="/services">Services</NavLink>
-              <NavLink to="/coverage">Coverage</NavLink>
-              <NavLink to="/aboutUs">About Us</NavLink>
-              <NavLink to="/pricing">Pricing</NavLink>
-              {user ? <NavLink to="/percel">Send A Percel</NavLink> : ""}
-
+              <NavLink to="/about">About Us</NavLink>
+              <NavLink to="/contact">Contact</NavLink>
+              {user ? <NavLink to="/tuition">Tuitions</NavLink> : ""}
+              {user ? <NavLink to="/tutors">Tutors</NavLink> : ""}
               {user ? (
-                <NavLink to="/dashboard/my-parcels">My Parcels</NavLink>
+                <Link className="btn bg-[#CAEB66] mr-2" to="/add-tuition">
+                  Add Tuition
+                </Link>
               ) : (
                 ""
               )}
-
-              <Link className="btn bg-[#CAEB66] mr-2" to="/rider">
-                Be a Rider
-              </Link>
+              {user ? (
+                <Link className="btn bg-[#CAEB66] mr-2" to="/add-tutors">
+                  Add Tutors
+                </Link>
+              ) : (
+                ""
+              )}
             </div>
           </div>
-          <img className="h-10 ml-3" src="" alt="" />
-          <a className="text-xl -ms-3 mt-2">ZapShift</a>
+          <img className="h-13 ml-3" src={Logo} alt="" />
         </div>
         <div className="navbar-center hidden md:flex">
           <div className="menu menu-horizontal px-1 flex gap-10">
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/services">Services</NavLink>
-            <NavLink to="/coverage">Coverage</NavLink>
-            <NavLink to="/aboutUs">About Us</NavLink>
-            <NavLink to="/pricing">Pricing</NavLink>
-            {user ? <NavLink to="/percel">Send A Percel</NavLink> : ""}
-            {user ? (
-              <NavLink to="/dashboard/my-parcels">My Parcels</NavLink>
-            ) : (
-              ""
-            )}
+
+            <NavLink to="/about">About Us</NavLink>
+            <NavLink to="/contact">Contact</NavLink>
+            {user ? <NavLink to="/tuition">Tuitions</NavLink> : ""}
+            {user ? <NavLink to="/tutors">Tutors</NavLink> : ""}
           </div>
         </div>
         <div className="navbar-end">
           {user ? (
             <Link
               className="navbar-center hidden md:flex btn bg-[#CAEB66] mr-2"
-              to="/rider"
+              to="/add-tuition"
             >
-              Be a Rider
+              Add Tuition
+            </Link>
+          ) : (
+            ""
+          )}
+          {user ? (
+            <Link
+              className="navbar-center hidden md:flex btn bg-[#CAEB66] mr-2"
+              to="add-tutors"
+            >
+              Add Tutors
             </Link>
           ) : (
             ""

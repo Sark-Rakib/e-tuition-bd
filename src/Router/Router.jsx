@@ -7,11 +7,15 @@ import Contact from "../Pages/Contact";
 import AuthLayout from "../AuthLayout/AuthLayout";
 import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
+import AddTuition from "../Component/AddTuition";
+import AddTutors from "../Component/AddTutors";
+import Root from "../Component/Root";
+import Error from "../Component/Error";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    Component: Home,
+    Component: Root,
     children: [
       {
         index: true,
@@ -33,6 +37,14 @@ export const router = createBrowserRouter([
         path: "/contact",
         Component: Contact,
       },
+      {
+        path: "/add-tuition",
+        Component: AddTuition,
+      },
+      {
+        path: "/add-tutors",
+        Component: AddTutors,
+      },
     ],
   },
   {
@@ -48,5 +60,9 @@ export const router = createBrowserRouter([
         Component: Register,
       },
     ],
+  },
+  {
+    path: "*",
+    Component: Error,
   },
 ]);

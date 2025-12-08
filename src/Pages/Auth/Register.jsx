@@ -58,7 +58,7 @@ const Register = () => {
   return (
     <div className="space-y-2">
       <h1 className="font-bold text-4xl">Create an Account</h1>
-      <p>Register with ZapShift</p>
+      <p>Register with e-Tuition-Bd</p>
       <form onSubmit={handleSubmit(handleRegister)}>
         <fieldset className="fieldset">
           {/* name */}

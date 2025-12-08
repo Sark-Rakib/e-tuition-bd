@@ -5,7 +5,7 @@ import { Outlet } from "react-router";
 const Home = () => {
   return (
     <div>
-      <Navbar></Navbar>
+      <h1>home</h1>
     </div>
   );
 };
