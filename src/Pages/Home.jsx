@@ -4,7 +4,7 @@ import { Outlet } from "react-router";
 
 const Home = () => {
   return (
-    <div>
+    <div className="w-11/12 mx-auto">
       <h1>home</h1>
     </div>
   );

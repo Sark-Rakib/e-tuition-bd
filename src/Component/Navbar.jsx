@@ -61,6 +61,13 @@ const Navbar = () => {
               ) : (
                 ""
               )}
+              {user ? (
+                <Link className="btn btn-primary mr-2" to="/dashboard">
+                  Dashboard
+                </Link>
+              ) : (
+                ""
+              )}
             </div>
           </div>
           <img className="h-13 ml-3" src={Logo} alt="" />
@@ -89,9 +96,19 @@ const Navbar = () => {
           {user ? (
             <Link
               className="navbar-center hidden md:flex btn btn-primary mr-2"
-              to="add-tutors"
+              to="/add-tutors"
             >
               Add Tutors
+            </Link>
+          ) : (
+            ""
+          )}
+          {user ? (
+            <Link
+              className="navbar-center hidden md:flex btn btn-primary mr-2"
+              to="/dashboard"
+            >
+              Dashboard
             </Link>
           ) : (
             ""

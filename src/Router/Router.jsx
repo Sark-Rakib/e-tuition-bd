@@ -11,6 +11,7 @@ import AddTuition from "../Component/AddTuition";
 import AddTutors from "../Component/AddTutors";
 import Root from "../Component/Root";
 import Error from "../Component/Error";
+import DashboardLayout from "../AuthLayout/DashboardLayout";
 
 export const router = createBrowserRouter([
   {
@@ -60,6 +61,11 @@ export const router = createBrowserRouter([
         Component: Register,
       },
     ],
+  },
+  {
+    path: "/dashboard",
+    Component: DashboardLayout,
+    children: [{}],
   },
   {
     path: "*",
