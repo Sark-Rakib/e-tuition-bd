@@ -17,6 +17,7 @@ import Student from "../Pages/Dashboard/Student";
 import Tuitor from "../Pages/Dashboard/Tuitor";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
 import TuitionDetails from "../Component/TuitionDetails";
+import PrivateRoute from "./PrivateRoute";
 import TutorDetails from "../Component/TutorDetails";
 
 export const router = createBrowserRouter([
@@ -94,11 +95,19 @@ export const router = createBrowserRouter([
   },
   {
     path: "/tuition-details/:id",
-    Component: TuitionDetails,
+    element: (
+      <PrivateRoute>
+        <TuitionDetails></TuitionDetails>
+      </PrivateRoute>
+    ),
   },
   {
     path: "/tutor-details/:id",
-    Component: TutorDetails,
+    element: (
+      <PrivateRoute>
+        <TutorDetails></TutorDetails>
+      </PrivateRoute>
+    ),
   },
   {
     path: "*",
