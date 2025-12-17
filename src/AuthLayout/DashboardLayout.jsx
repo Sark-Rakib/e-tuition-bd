@@ -49,7 +49,7 @@ const DashboardLayout = () => {
               <path d="M14 10l2 2l-2 2"></path>
             </svg>
           </label>
-          <div className="px-4">Zap Shift Dashboard</div>
+          <div className="px-4">e-Tuition-BD Dashboard</div>
         </nav>
         {/* Page content here */}
         <Outlet></Outlet>
@@ -133,7 +133,7 @@ const DashboardLayout = () => {
             </li>
 
             {/* user profile */}
-            <div className="mt-80">
+            <div className="mt-86 md:mt-103">
               <li>
                 <Link
                   to="/dashboard/profile"

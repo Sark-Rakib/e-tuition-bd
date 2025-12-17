@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import useAxiosSecure from "../Hooks/useAxios";
 import TuitionCard from "../Component/TuitionCard";
+import Loading from "../Component/Loading";
 
 const Tuitions = () => {
   const axiosSecure = useAxiosSecure();
@@ -14,8 +15,8 @@ const Tuitions = () => {
     },
   });
 
-  if (isLoading)
-    return <div className="text-center py-10">Loading tuitions...</div>;
+  if (isLoading) return <Loading></Loading>;
+  const approvedTuitions = tuitions.filter((t) => t.status === "Approved");
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10">
@@ -23,13 +24,13 @@ const Tuitions = () => {
         Available Tuition
       </h1>
 
-      {tuitions.length === 0 ? (
+      {approvedTuitions.length === 0 ? (
         <p className="text-center text-xl text-gray-600">
           No tuition posted yet.
         </p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {tuitions.map((tuition) => (
+          {approvedTuitions.map((tuition) => (
             <TuitionCard key={tuition._id} tuition={tuition} />
           ))}
         </div>

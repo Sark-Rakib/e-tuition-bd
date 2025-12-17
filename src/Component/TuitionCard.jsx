@@ -19,7 +19,6 @@ const TuitionCard = ({ tuition }) => {
     status = "Pending",
   } = tuition;
 
-  // তারিখ ফরম্যাট করা
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString("en-GB", {
@@ -33,7 +32,7 @@ const TuitionCard = ({ tuition }) => {
     <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-200">
       <div className="card-body p-6">
         {/* Status Badge */}
-        <div className="flex justify-between items-start mb-4">
+        <div className="flex justify-between items-center gap-5 mb-4">
           <div
             className={`badge ${
               status === "Approved"

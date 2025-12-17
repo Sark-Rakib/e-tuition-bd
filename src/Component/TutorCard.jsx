@@ -6,20 +6,21 @@ import TutorPagination from "./TutorPagination";
 const TutorCard = ({ tutor }) => {
   const {
     _id,
-    displayName,
+    tutorName,
     email,
     tutorPhoto,
-    phone, // যদি phone থাকে
-    subjects, // array বা comma separated string
+    phone,
+    subjects,
     qualification,
-    experience, // years
+    experience,
     location,
-    salaryExpectation, // optional: expected salary per month
+    salaryExpectation,
     availableDays,
     availableTime,
     bio,
-    role = "tutor",
+    role = "Tutor",
     createdAt,
+    status,
   } = tutor;
 
   // তারিখ ফরম্যাট
@@ -33,7 +34,6 @@ const TutorCard = ({ tutor }) => {
     });
   };
 
-  // subjects যদি string হয় তাহলে array-এ convert
   const subjectList = Array.isArray(subjects)
     ? subjects
     : subjects
@@ -44,9 +44,9 @@ const TutorCard = ({ tutor }) => {
     <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-200">
       <div className="card-body p-6">
         {/* Role Badge & Joined Date */}
-        <div className="flex justify-between items-start mb-4">
+        <div className="flex justify-between items-center gap-5 mb-4">
           <div className="badge badge-success badge-lg font-semibold">
-            {role.charAt(0).toUpperCase() + role.slice(1)}
+            {status}
           </div>
           <p className="text-sm text-gray-500">
             Joined: {formatDate(createdAt || new Date())}
@@ -57,13 +57,14 @@ const TutorCard = ({ tutor }) => {
         <div className="flex items-center gap-4 mb-5">
           <div className="avatar">
             <div className="w-20 rounded-full ring ring-success ring-offset-base-100 ring-offset-2">
-              <img src={tutorPhoto} alt={displayName} />
+              <img src={tutorPhoto} alt={tutorName} />
             </div>
           </div>
           <div>
             <h2 className="card-title text-2xl font-bold text-gray-800">
-              {displayName || "Tutor"}
+              {tutorName}
             </h2>
+            <p>{role}</p>
             <p className="text-gray-600">{email}</p>
             {phone && <p className="text-sm text-gray-500 mt-1">📞 {phone}</p>}
           </div>
