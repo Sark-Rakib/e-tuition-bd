@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Outlet } from "react-router";
+import { Link, Outlet, useNavigate } from "react-router";
 import { CiLogout } from "react-icons/ci";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { MdAdminPanelSettings } from "react-icons/md";
@@ -10,12 +10,13 @@ import { FaHome } from "react-icons/fa";
 import useAuth from "../Hooks/useAuth";
 
 const DashboardLayout = () => {
-  const { logOut } = useAuth();
+  const { user, logOut } = useAuth();
+  const navigate = useNavigate();
 
   const handleLogOut = () => {
     logOut()
-      .then((res) => {
-        console.log(res.user);
+      .then(() => {
+        navigate("/"); // or navigate("/login")
       })
       .catch((err) => {
         console.log(err.message);
@@ -26,7 +27,7 @@ const DashboardLayout = () => {
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         {/* Navbar */}
-        <nav className="navbar w-full bg-base-300">
+        <nav className="navbar text-white sticky top-0 z-10 w-full bg-blue-900">
           <label
             htmlFor="my-drawer-4"
             aria-label="open sidebar"
@@ -60,7 +61,7 @@ const DashboardLayout = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-18 is-drawer-open:w-64">
+        <div className="flex min-h-full flex-col items-start bg-blue-900 is-drawer-close:w-20 is-drawer-open:w-64">
           {/* Sidebar content here */}
           <ul className="menu w-full grow">
             {/* List item */}
@@ -131,43 +132,39 @@ const DashboardLayout = () => {
               </Link>
             </li>
 
-            {/* List item */}
-            <li>
-              <button
-                className="btn btn-primary flex items-center is-drawer-close:tooltip is-drawer-close:tooltip-right mb-100"
-                data-tip="Settings"
-              >
-                {/* Settings icon */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  strokeWidth="2"
-                  fill="none"
-                  stroke="currentColor"
-                  className="my-1.5 inline-block size-4"
+            {/* user profile */}
+            <div className="mt-80">
+              <li>
+                <Link
+                  to="/dashboard/profile"
+                  className="btn btn-primary flex items-center mb-1 gap-2
+    is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                  data-tip="My Profile"
                 >
-                  <path d="M20 7h-9"></path>
-                  <path d="M14 17H5"></path>
-                  <circle cx="17" cy="17" r="3"></circle>
-                  <circle cx="7" cy="7" r="3"></circle>
-                </svg>
-                <span className="is-drawer-close:hidden">Settings</span>
-              </button>
-            </li>
-            {/* log out button */}
-            <li>
-              <button
-                onClick={handleLogOut}
-                className="btn btn-primary flex items-center is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Log Out"
-              >
-                {/* logout icon */}
-                <CiLogout />
-                <span className="is-drawer-close:hidden">Logout</span>
-              </button>
-            </li>
+                  {/* profile icon */}
+                  {/* <FaUserCircle className="text-lg" /> */}
+                  <img
+                    src={user?.photoURL}
+                    alt="User"
+                    className="w-8 h-8 rounded-full object-cover"
+                  />
+                  <span className="is-drawer-close:hidden">My Profile</span>
+                </Link>
+              </li>
+
+              {/* log out button */}
+              <li>
+                <button
+                  onClick={handleLogOut}
+                  className="btn btn-primary flex items-center is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                  data-tip="Log Out"
+                >
+                  {/* logout icon */}
+                  <CiLogout />
+                  <span className="is-drawer-close:hidden">Logout</span>
+                </button>
+              </li>
+            </div>
           </ul>
         </div>
       </div>

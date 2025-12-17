@@ -19,6 +19,8 @@ import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
 import TuitionDetails from "../Component/TuitionDetails";
 import PrivateRoute from "./PrivateRoute";
 import TutorDetails from "../Component/TutorDetails";
+import MyProfile from "../Component/MyProfile";
+import EditProfile from "../Component/EditProfile";
 
 export const router = createBrowserRouter([
   {
@@ -90,6 +92,14 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/payment",
         Component: PaymentHistory,
+      },
+      {
+        path: "/dashboard/profile",
+        Component: MyProfile,
+      },
+      {
+        path: "/dashboard/edit-profile",
+        Component: EditProfile,
       },
     ],
   },

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router";
 import useAxiosSecure from "../Hooks/useAxios";
 import Loading from "./Loading";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 const TutorDetails = () => {
   const { id } = useParams();
@@ -87,12 +88,13 @@ const TutorDetails = () => {
       <div className="flex justify-center gap-4 mt-6">
         <Link
           to="/tutors"
-          className="px-6 py-3 bg-gray-300 rounded-lg hover:bg-gray-400 transition-all"
+          className="flex items-center justify-center gap-3 px-6 py-3 bg-gray-300 rounded-lg hover:bg-gray-400 transition-all"
         >
+          <IoMdArrowRoundBack className="text-xl" />
           Back to Tutors
         </Link>
         <button className="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-all">
-          Apply for Tutor (Payment)
+          Accept Tutor (Payment)
         </button>
       </div>
     </div>
