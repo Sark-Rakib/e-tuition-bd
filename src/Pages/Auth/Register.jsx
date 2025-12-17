@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import axios from "axios";
 import userAuth from "../../Hooks/useAuth";
 import SocialLogin from "./SocialLogin";
+import useAxiosSecure from "../../Hooks/useAxios";
 
 const Register = () => {
   const {
@@ -16,6 +17,7 @@ const Register = () => {
   const { registerUser, updateUserProfile } = userAuth();
   const location = useLocation();
   const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
 
   const handleRegister = (data) => {
     console.log(data.photo[0]);
@@ -40,6 +42,18 @@ const Register = () => {
             displayName: data.name,
             photoURL: res.data.data.url,
           };
+
+          // create user in the database
+          const userInfo = {
+            email: data.email,
+            displayName: data.name,
+            photoURL: data.photoURL,
+          };
+          axiosSecure.post("/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              console.log("user created in the page");
+            }
+          });
 
           updateUserProfile(userProfile)
             .then((res) => {

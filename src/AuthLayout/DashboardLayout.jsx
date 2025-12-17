@@ -1,8 +1,26 @@
 import React from "react";
-import { Link, NavLink, Outlet } from "react-router";
-import { CiDeliveryTruck } from "react-icons/ci";
+import { Link, Outlet } from "react-router";
+import { CiLogout } from "react-icons/ci";
+import { FaChalkboardTeacher } from "react-icons/fa";
+import { MdAdminPanelSettings } from "react-icons/md";
+import { PiStudent } from "react-icons/pi";
+import { MdPayment } from "react-icons/md";
+import { FaHome } from "react-icons/fa";
+
+import useAuth from "../Hooks/useAuth";
 
 const DashboardLayout = () => {
+  const { logOut } = useAuth();
+
+  const handleLogOut = () => {
+    logOut()
+      .then((res) => {
+        console.log(res.user);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -42,48 +60,81 @@ const DashboardLayout = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64">
+        <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-18 is-drawer-open:w-64">
           {/* Sidebar content here */}
           <ul className="menu w-full grow">
             {/* List item */}
             <li>
               <Link
                 to="/"
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                className="btn btn-primary flex items-center mb-1 is-drawer-close:tooltip is-drawer-close:tooltip-right"
                 data-tip="Homepage"
               >
                 {/* Home icon */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  strokeWidth="2"
-                  fill="none"
-                  stroke="currentColor"
-                  className="my-1.5 inline-block size-4"
-                >
-                  <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
-                  <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                </svg>
+
+                <FaHome />
                 <span className="is-drawer-close:hidden">Homepage</span>
               </Link>
             </li>
 
             {/* our dashboard links */}
-            <NavLink
-              className=" flex items-center gap-1 is-drawer-close:tooltip is-drawer-close:tooltip-right"
-              data-tip="MyParcels"
-              to="/dashboard/my-parcels"
-            >
-              <CiDeliveryTruck className="ml-3 h-5 w-5" />
-              <span className="is-drawer-close:hidden">My Parcels</span>{" "}
-            </NavLink>
+
+            <li>
+              <Link
+                to="/dashboard/student"
+                className="btn btn-primary flex items-center mb-1 is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="Student"
+              >
+                {/* Student icon */}
+
+                <PiStudent />
+                <span className="is-drawer-close:hidden">Student</span>
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                to="/dashboard/tuitor"
+                className="btn btn-primary flex items-center mb-1 is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="Tuitor"
+              >
+                {/* tuitor icon */}
+
+                <FaChalkboardTeacher />
+                <span className="is-drawer-close:hidden">Tuitor</span>
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                to="/dashboard/admin"
+                className="btn btn-primary flex items-center mb-1 is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="User Management"
+              >
+                {/* admin icon */}
+
+                <MdAdminPanelSettings />
+                <span className="is-drawer-close:hidden">User Management</span>
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                to="/dashboard/payment"
+                className="btn btn-primary flex items-center mb-1 is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="Payment History"
+              >
+                {/* payment icon */}
+
+                <MdPayment />
+                <span className="is-drawer-close:hidden">Payment History</span>
+              </Link>
+            </li>
 
             {/* List item */}
             <li>
               <button
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                className="btn btn-primary flex items-center is-drawer-close:tooltip is-drawer-close:tooltip-right mb-100"
                 data-tip="Settings"
               >
                 {/* Settings icon */}
@@ -103,6 +154,18 @@ const DashboardLayout = () => {
                   <circle cx="7" cy="7" r="3"></circle>
                 </svg>
                 <span className="is-drawer-close:hidden">Settings</span>
+              </button>
+            </li>
+            {/* log out button */}
+            <li>
+              <button
+                onClick={handleLogOut}
+                className="btn btn-primary flex items-center is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="Log Out"
+              >
+                {/* logout icon */}
+                <CiLogout />
+                <span className="is-drawer-close:hidden">Logout</span>
               </button>
             </li>
           </ul>
