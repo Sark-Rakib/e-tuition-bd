@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router";
 import Logo from "../assets/e-tuition-bd.png";
-// import "./Navbar.css";
+import "./Navbar.css";
 import userAuth from "../Hooks/useAuth";
 
 const Navbar = () => {

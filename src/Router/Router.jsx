@@ -33,11 +33,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "/tuition",
-        Component: Tuition,
+        element: (
+          <PrivateRoute>
+            <Tuition></Tuition>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/tutors",
-        Component: Tutors,
+        element: (
+          <PrivateRoute>
+            <Tutors></Tutors>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/about",
@@ -94,7 +102,7 @@ export const router = createBrowserRouter([
         Component: PaymentHistory,
       },
       {
-        path: "/dashboard/profile",
+        index: true,
         Component: MyProfile,
       },
       {

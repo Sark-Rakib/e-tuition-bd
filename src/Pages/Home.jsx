@@ -72,23 +72,22 @@ const HomePage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="bg-indigo-50 p-6 rounded-xl shadow hover:shadow-lg transition-all"
+                className="bg-indigo-50 p-6 rounded-xl shadow hover:shadow-lg transition-all text-center"
               >
-                <h3 className="text-xl font-semibold mb-2">{tuition.title}</h3>
-                <p>
-                  <strong>Class:</strong> {tuition.studentClass}
-                </p>
-                <p>
-                  <strong>Subjects:</strong> {tuition.subject}
-                </p>
-                <p>
-                  <strong>Location:</strong> {tuition.location}
+                <img
+                  src={tuition.studentPhoto}
+                  alt={tuition.studentName}
+                  className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
+                />
+                <h3 className="text-xl font-semibold">{tuition.studentName}</h3>
+                <p className="text-gray-600">
+                  Student Class : {tuition.studentClass}
                 </p>
                 <Link
                   to={`/tuition-details/${tuition._id}`}
-                  className="inline-block mt-4 px-4 py-2  bg-indigo-600 text-white rounded hover:bg-indigo-700 transition-all"
+                  className="inline-block mt-4 px-4 py-2 bg-yellow-400 text-indigo-800 rounded hover:bg-yellow-500 transition-all"
                 >
-                  View Details
+                  View Profile
                 </Link>
               </motion.div>
             ))}
@@ -121,7 +120,9 @@ const HomePage = () => {
                   className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
                 />
                 <h3 className="text-xl font-semibold">{tutor.tutorName}</h3>
-                <p className="text-gray-600">{tutor.education}</p>
+                <p className="text-gray-600">
+                  Current Status : {tutor.currentStatus}
+                </p>
                 <Link
                   to={`/tutor-details/${tutor._id}`}
                   className="inline-block mt-4 px-4 py-2 bg-yellow-400 text-indigo-800 rounded hover:bg-yellow-500 transition-all"

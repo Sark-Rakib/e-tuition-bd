@@ -82,6 +82,20 @@ const AddTuitionForm = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white rounded-3xl shadow-xl p-8 border border-indigo-100 space-y-7"
       >
+        {/* student Name & Photo (Auto-filled) */}
+        <div className="flex items-center gap-6 bg-indigo-50 p-6 rounded-2xl">
+          <img
+            src={user?.photoURL}
+            alt="displayName"
+            className="w-24 h-24 rounded-full ring-4 ring-indigo-200 object-cover"
+          />
+          <div>
+            <h3 className="text-2xl font-bold text-gray-800">
+              {user?.displayName}
+            </h3>
+            <p className="text-gray-600">{user?.email}</p>
+          </div>
+        </div>
         {/* Title */}
         <div>
           <label className="block text-lg font-semibold text-gray-700 mb-2">

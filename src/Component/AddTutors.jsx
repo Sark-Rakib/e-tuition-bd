@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
 import useAuth from "../Hooks/useAuth";
 import useAxiosSecure from "../Hooks/useAxios";
+import Swal from "sweetalert2";
 
 const AddTutors = () => {
   const { user } = useAuth();
@@ -19,22 +19,24 @@ const AddTutors = () => {
       ...data,
       tutorName: user?.displayName,
       tutorEmail: user?.email,
-      tutorPhoto:
-        user?.photoURL || "https://i.ibb.co.com/4p0jH0Z/default-avatar.jpg",
-      status: "Pending", // Admin approve করবে
+      tutorPhoto: user?.photoURL,
+      status: "Pending",
       postedAt: new Date().toISOString(),
     };
 
     try {
       await axiosSecure.post("/tutors", tutorData);
-      toast.success(
-        "Tutor profile posted successfully! Admin will review soon."
-      );
+
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Tutor profile posted successfully! Admin will review soon.",
+        showConfirmButton: false,
+        timer: 1500,
+      });
       reset();
     } catch (err) {
-      toast.error(
-        err?.response?.data?.message || "Failed to post tutor profile"
-      );
+      console.log(err);
     }
   };
 
@@ -66,9 +68,6 @@ const AddTutors = () => {
               {user?.displayName}
             </h3>
             <p className="text-gray-600">{user?.email}</p>
-            <p className="text-sm text-indigo-600 mt-1">
-              Your profile photo & name (from account)
-            </p>
           </div>
         </div>
 
