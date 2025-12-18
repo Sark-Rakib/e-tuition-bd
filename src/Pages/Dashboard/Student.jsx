@@ -2,9 +2,9 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxios";
 import Loading from "../../Component/Loading";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
 import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Student = () => {
   const axiosSecure = useAxiosSecure();
@@ -25,59 +25,94 @@ const Student = () => {
   });
 
   const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this tuition?"))
-      return;
-    try {
-      const res = await axiosSecure.delete(`/tuitions/${id}`);
-      if (res.data.deletedCount > 0) {
-        toast.success("Tuition deleted successfully ✅");
-        refetch();
+    Swal.fire({
+      title: "Are you sure?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const res = await axiosSecure.delete(`/tuitions/${id}`);
+          if (res.data.deletedCount > 0) {
+            refetch();
+          }
+        } catch (err) {
+          console.log(err);
+        }
+        Swal.fire("Deleted!", "Your tuition has been deleted.", "success");
       }
-    } catch (err) {
-      console.log(err);
-      toast.error("Failed to delete tuition ❌");
-    }
+    });
   };
 
   const handleEdit = (id) => {
     navigate(`/tuitions/${id}/edit`);
   };
-
   const handleView = (id) => {
     navigate(`/tuition-details/${id}`);
   };
   const handleApprove = async (id) => {
-    if (!window.confirm("Are you sure you want to approve this tuition?"))
-      return;
-    try {
-      const res = await axiosSecure.patch(`/tuitions/${id}/approve`, {
-        email: user?.email, // যেই user approve করছে তার email
-      });
-      if (res.data.success) {
-        toast.success("Tuition approved ✅");
-        refetch(); // update UI
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to approve this tuition!",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#16a34a",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, approve it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const res = await axiosSecure.patch(`/tuitions/${id}/approve`, {
+            email: user?.email,
+          });
+          if (res.data.success) {
+            refetch();
+            Swal.fire(
+              "Approved!",
+              "This tuition has been approved.",
+              "success"
+            );
+          }
+        } catch (err) {
+          console.log(err);
+          Swal.fire("Error!", "Something went wrong while approving.", "error");
+        }
       }
-    } catch (err) {
-      console.log(err);
-      toast.error("Failed to approve tuition ❌");
-    }
+    });
   };
 
   const handleReject = async (id) => {
-    if (!window.confirm("Are you sure you want to reject this tuition?"))
-      return;
-    try {
-      const res = await axiosSecure.patch(`/tuitions/${id}/reject`, {
-        email: user?.email, // যেই user reject করছে তার email
-      });
-      if (res.data.success) {
-        toast.success("Tuition rejected ❌");
-        refetch(); // update UI
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to reject this tuition!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#dc2626", // red
+      cancelButtonColor: "#6b7280",
+      confirmButtonText: "Yes, reject it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const res = await axiosSecure.patch(`/tuitions/${id}/reject`, {
+            email: user?.email, // admin email
+          });
+          if (res.data.success) {
+            refetch();
+            Swal.fire(
+              "Rejected!",
+              "This tuition has been rejected.",
+              "success"
+            );
+          }
+        } catch (err) {
+          console.log(err);
+          Swal.fire("Error!", "Something went wrong while rejecting.", "error");
+        }
       }
-    } catch (err) {
-      console.log(err);
-      toast.error("Failed to reject tuition ❌");
-    }
+    });
   };
 
   if (isLoading) return <Loading />;

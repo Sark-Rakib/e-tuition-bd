@@ -13,10 +13,10 @@ const HomePage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const tuitionsRes = await axiosSecure.get("/tuitions?limit=5");
+        const tuitionsRes = await axiosSecure.get("/tuitions");
         setTuitions(tuitionsRes.data);
 
-        const tutorsRes = await axiosSecure.get("/tutors?limit=5");
+        const tutorsRes = await axiosSecure.get("/tutors");
         setTutors(tutorsRes.data);
       } catch (err) {
         console.error(err);
@@ -28,6 +28,8 @@ const HomePage = () => {
   }, [axiosSecure]);
 
   if (loading) return <Loading />;
+  const approvedTuition = tuitions.filter((t) => t.status === "Approved");
+  const approvedTutor = tutors.filter((t) => t.status === "Approved");
 
   return (
     <div className="space-y-16">
@@ -41,10 +43,16 @@ const HomePage = () => {
             Connect with verified tutors and manage tuition posts effortlessly.
           </p>
           <Link
-            to="/tuitions"
+            to="/tuition"
             className="px-8 py-4 bg-yellow-400 text-indigo-800 font-semibold rounded-lg hover:bg-yellow-500 transition-all"
           >
             Explore Tuitions
+          </Link>
+          <Link
+            to="/tutors"
+            className="ml-5 px-8 py-4 bg-yellow-400 text-indigo-800 font-semibold rounded-lg hover:bg-yellow-500 transition-all"
+          >
+            Explore Tutors
           </Link>
         </div>
       </section>
@@ -52,10 +60,10 @@ const HomePage = () => {
       {/* Latest Tuitions */}
       <section className="max-w-7xl mx-auto px-4">
         <h2 className="text-3xl font-bold mb-6 text-center">
-          Latest Tuition Posts
+          Latest <span className="text-primary">Tuition</span> Posts
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {tuitions
+          {approvedTuition
             .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // sort by latest first
             .slice(0, 3)
             .map((tuition) => (
@@ -64,7 +72,7 @@ const HomePage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition-all"
+                className="bg-indigo-50 p-6 rounded-xl shadow hover:shadow-lg transition-all"
               >
                 <h3 className="text-xl font-semibold mb-2">{tuition.title}</h3>
                 <p>
@@ -88,10 +96,12 @@ const HomePage = () => {
       </section>
 
       {/* Latest Tutors */}
-      <section className="max-w-7xl mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-6 text-center">Latest Tutors</h2>
+      <section className="max-w-7xl mx-auto  px-4">
+        <h2 className="text-3xl font-bold mb-6 text-center">
+          Latest <span className="text-primary">Tutors</span>
+        </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {tutors
+          {approvedTutor
             .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // sort by latest first
             .slice(0, 3)
             .map((tutor) => (
@@ -100,7 +110,7 @@ const HomePage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition-all text-center"
+                className="bg-indigo-50 p-6 rounded-xl shadow hover:shadow-lg transition-all text-center"
               >
                 <img
                   src={
@@ -126,7 +136,9 @@ const HomePage = () => {
       {/* How It Works */}
       <section className="bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-4 text-center space-y-6">
-          <h2 className="text-3xl font-bold">How It Works</h2>
+          <h2 className="text-3xl font-bold">
+            How <span className="text-primary">It</span> Works
+          </h2>
           <div className="grid md:grid-cols-3 gap-6 mt-8">
             <div className="p-6 bg-white rounded-xl shadow hover:shadow-lg transition-all">
               <h3 className="text-xl font-semibold mb-2">1. Post Tuition</h3>
@@ -155,7 +167,7 @@ const HomePage = () => {
       {/* Why Choose Us */}
       <section className="max-w-7xl mx-auto px-4 py-16">
         <h2 className="text-3xl font-bold mb-6 text-center">
-          Why Choose eTuitionBd
+          Why Choose <span className="text-primary">eTuitionBd</span>
         </h2>
         <div className="grid md:grid-cols-3 gap-6">
           <div className="p-6 bg-indigo-50 rounded-xl shadow text-center">

@@ -1,8 +1,8 @@
 // src/pages/dashboard/student/AddTuitionForm.jsx
 import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
 import useAxiosSecure from "../Hooks/useAxios";
 import useAuth from "../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 // Basic validation rules (using React Hook Form built-in)
 const tuitionSchema = {
@@ -50,10 +50,22 @@ const AddTuitionForm = () => {
 
     try {
       await axiosSecure.post("/tuitions", tuitionData);
-      toast.success("Tuition posted successfully! Admin will review it soon.");
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Tuition posted successfully! Admin will review it soon.",
+        showConfirmButton: false,
+        timer: 1500,
+      });
       reset();
-    } catch (err) {
-      toast.error(err?.response?.data?.message || "Failed to post tuition");
+    } catch {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Tuition post has been failed",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
   };
 
