@@ -36,7 +36,12 @@ const TutorDetails = () => {
     };
     const res = await axiosSecure.post("/create-checkout-session", paymentInfo);
     console.log(res.data);
-
+    await axiosSecure.post("/payments-test", {
+      tutorId: tutor._id,
+      tutorName: tutor.tutorName,
+      tutorEmail: tutor.tutorEmail,
+      amount: tutor.expectedSalary,
+    });
     window.location.href = res.data.url;
   };
 
