@@ -47,9 +47,6 @@ const Student = () => {
     });
   };
 
-  const handleEdit = (id) => {
-    navigate(`/dashboard/tuition/${id}/edit`);
-  };
   const handleView = (id) => {
     navigate(`/tuition-details/${id}`);
   };
@@ -171,12 +168,7 @@ const Student = () => {
                     >
                       View
                     </button>
-                    <button
-                      onClick={() => handleEdit(t._id)}
-                      className="btn btn-xs btn-warning"
-                    >
-                      Edit
-                    </button>
+
                     <button
                       onClick={() => handleDelete(t._id)}
                       className="btn btn-xs btn-error"

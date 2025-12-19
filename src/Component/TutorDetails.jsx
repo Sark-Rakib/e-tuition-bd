@@ -27,6 +27,18 @@ const TutorDetails = () => {
   if (loading) return <Loading></Loading>;
   if (!tutor) return <div className="text-center py-10">Tutor not found</div>;
 
+  const handlePayment = async () => {
+    const paymentInfo = {
+      expectedSalary: tutor.expectedSalary,
+      tutorId: tutor._id,
+      tutorEmail: tutor.tutorEmail,
+      tutorName: tutor.tutorName,
+    };
+    const res = await axiosSecure.post("/create-checkout-session", paymentInfo);
+    console.log(res.data);
+    window.location.href = res.data.url;
+  };
+
   return (
     <div className="max-w-4xl mx-auto p-6 mt-10 bg-white rounded-2xl shadow-lg">
       {/* Header */}
@@ -93,7 +105,10 @@ const TutorDetails = () => {
           <IoMdArrowRoundBack className="text-xl" />
           Back to Tutors
         </Link>
-        <button className="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-all">
+        <button
+          onClick={handlePayment}
+          className="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-all"
+        >
           Accept Tutor (Payment)
         </button>
       </div>
