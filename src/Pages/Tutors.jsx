@@ -2,6 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../Hooks/useAxios";
 import TutorCard from "../Component/TutorCard";
+import Loading from "../Component/Loading";
 
 const Tutors = () => {
   const axiosSecure = useAxiosSecure();
@@ -14,8 +15,7 @@ const Tutors = () => {
     },
   });
 
-  if (isLoading)
-    return <div className="text-center py-10">Loading tutors...</div>;
+  if (isLoading) return <Loading></Loading>;
   const approvedTutor = tutors.filter((t) => t.status === "Approved");
 
   return (
