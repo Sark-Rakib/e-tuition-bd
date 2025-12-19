@@ -8,8 +8,10 @@ import { MdPayment } from "react-icons/md";
 import { FaHome } from "react-icons/fa";
 
 import useAuth from "../Hooks/useAuth";
+import UseRole from "../Hooks/UseRole";
 
 const DashboardLayout = () => {
+  const { role } = UseRole();
   const { user, logOut } = useAuth();
   const navigate = useNavigate();
 
@@ -79,44 +81,50 @@ const DashboardLayout = () => {
 
             {/* our dashboard links */}
 
-            <li>
-              <Link
-                to="/dashboard/student"
-                className="btn btn-primary flex items-center mb-1 is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Student"
-              >
-                {/* Student icon */}
+            {role === "admin" && (
+              <>
+                <li>
+                  <Link
+                    to="/dashboard/student"
+                    className="btn btn-primary flex items-center mb-1 is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Student"
+                  >
+                    {/* Student icon */}
 
-                <PiStudent />
-                <span className="is-drawer-close:hidden">Student</span>
-              </Link>
-            </li>
+                    <PiStudent />
+                    <span className="is-drawer-close:hidden">Student</span>
+                  </Link>
+                </li>
 
-            <li>
-              <Link
-                to="/dashboard/tuitor"
-                className="btn btn-primary flex items-center mb-1 is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Tuitor"
-              >
-                {/* tuitor icon */}
+                <li>
+                  <Link
+                    to="/dashboard/tuitor"
+                    className="btn btn-primary flex items-center mb-1 is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Tuitor"
+                  >
+                    {/* tuitor icon */}
 
-                <FaChalkboardTeacher />
-                <span className="is-drawer-close:hidden">Tuitor</span>
-              </Link>
-            </li>
+                    <FaChalkboardTeacher />
+                    <span className="is-drawer-close:hidden">Tuitor</span>
+                  </Link>
+                </li>
 
-            <li>
-              <Link
-                to="/dashboard/admin"
-                className="btn btn-primary flex items-center mb-1 is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="User Management"
-              >
-                {/* admin icon */}
+                <li>
+                  <Link
+                    to="/dashboard/admin"
+                    className="btn btn-primary flex items-center mb-1 is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="User Management"
+                  >
+                    {/* admin icon */}
 
-                <MdAdminPanelSettings />
-                <span className="is-drawer-close:hidden">User Management</span>
-              </Link>
-            </li>
+                    <MdAdminPanelSettings />
+                    <span className="is-drawer-close:hidden">
+                      User Management
+                    </span>
+                  </Link>
+                </li>
+              </>
+            )}
 
             <li>
               <Link
@@ -130,9 +138,35 @@ const DashboardLayout = () => {
                 <span className="is-drawer-close:hidden">Payment History</span>
               </Link>
             </li>
+            {/* my tuition */}
+            <li>
+              <Link
+                to="/dashboard/my-tuition"
+                className="btn btn-primary flex items-center mb-1 is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="My Tuition"
+              >
+                {/* student icon */}
+
+                <PiStudent />
+                <span className="is-drawer-close:hidden">My Tuition</span>
+              </Link>
+            </li>
+            {/* my application */}
+            <li>
+              <Link
+                to="/dashboard/my-application"
+                className="btn btn-primary flex items-center mb-1 is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="My Application"
+              >
+                {/* tutor icon */}
+
+                <FaChalkboardTeacher />
+                <span className="is-drawer-close:hidden">My Application</span>
+              </Link>
+            </li>
 
             {/* user profile */}
-            <div className="mt-86 md:mt-103">
+            <div className="mt-64 md:mt-80">
               <li>
                 <Link
                   to="/dashboard/profile"

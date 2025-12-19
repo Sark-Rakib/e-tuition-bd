@@ -13,7 +13,7 @@ const PrivateRoute = ({ children }) => {
   if (!user) {
     return <Navigate state={location.pathname} to="/login"></Navigate>;
   }
-  // if (user.role === "admin") return <Navigate to="/" />;
+
   return children;
 };
 

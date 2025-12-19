@@ -54,20 +54,21 @@ const AddTutors = () => {
         className="bg-white rounded-3xl shadow-xl p-8 border border-indigo-100 space-y-7"
       >
         {/* Tutor Name & Photo (Auto-filled) */}
-        <div className="flex items-center gap-6 bg-indigo-50 p-6 rounded-2xl">
+        <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 bg-indigo-50 p-6 md:p-8 rounded-2xl shadow-md">
           <img
             src={
-              user?.photoURL ||
-              "https://i.ibb.co.com/4p0jH0Z/default-avatar.jpg"
+              user?.photoURL || "https://i.ibb.co/4p0jH0Z/default-avatar.jpg"
             }
-            alt="Tutor"
-            className="w-24 h-24 rounded-full ring-4 ring-indigo-200 object-cover"
+            alt={user?.displayName || "Tutor"}
+            className="w-24 h-24 md:w-28 md:h-28 rounded-full ring-4 ring-indigo-200 object-cover"
           />
-          <div>
-            <h3 className="text-2xl font-bold text-gray-800">
-              {user?.displayName}
+          <div className="text-center md:text-left">
+            <h3 className="text-xl md:text-2xl font-bold text-gray-800">
+              {user?.displayName || "No Name"}
             </h3>
-            <p className="text-gray-600">{user?.email}</p>
+            <p className="text-gray-600 text-sm md:text-base">
+              {user?.email || "No Email"}
+            </p>
           </div>
         </div>
 

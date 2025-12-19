@@ -21,6 +21,10 @@ import PrivateRoute from "./PrivateRoute";
 import TutorDetails from "../Component/TutorDetails";
 import MyProfile from "../Component/MyProfile";
 import EditProfile from "../Component/EditProfile";
+import EditTuition from "../Component/EditTuition";
+import EditTutor from "../Component/EditTutor";
+import MyTuition from "../Pages/Dashboard/MyTuition";
+import MyApplication from "../Pages/Dashboard/MyApplication";
 
 export const router = createBrowserRouter([
   {
@@ -87,22 +91,50 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard/student",
-        Component: Student,
+        element: (
+          <PrivateRoute>
+            <Student></Student>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/tuition/:id/edit",
+        Component: EditTuition,
       },
       {
         path: "/dashboard/tuitor",
-        Component: Tuitor,
+        element: (
+          <PrivateRoute>
+            <Tuitor></Tuitor>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/tutor/:id/edit",
+        Component: EditTutor,
       },
       {
         path: "/dashboard/admin",
-        Component: Admin,
+        element: (
+          <PrivateRoute>
+            <Admin></Admin>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard/payment",
         Component: PaymentHistory,
       },
       {
-        index: true,
+        path: "/dashboard/my-tuition",
+        Component: MyTuition,
+      },
+      {
+        path: "/dashboard/my-application",
+        Component: MyApplication,
+      },
+      {
+        path: "/dashboard/profile",
         Component: MyProfile,
       },
       {

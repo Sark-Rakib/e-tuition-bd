@@ -34,7 +34,7 @@ const HomePage = () => {
   return (
     <div className="space-y-16">
       {/* Hero Section */}
-      <section className="bg-indigo-600 text-white mt-5 py-24">
+      <section className="w-11/12 mx-auto bg-indigo-600 text-white mt-5 py-24">
         <div className="max-w-7xl mx-auto px-4 text-center space-y-6">
           <h1 className="text-5xl font-bold">
             Find the Best Tutors & Tuitions
@@ -42,18 +42,20 @@ const HomePage = () => {
           <p className="text-xl">
             Connect with verified tutors and manage tuition posts effortlessly.
           </p>
-          <Link
-            to="/tuition"
-            className="px-8 py-4 bg-yellow-400 text-indigo-800 font-semibold rounded-lg hover:bg-yellow-500 transition-all"
-          >
-            Explore Tuitions
-          </Link>
-          <Link
-            to="/tutors"
-            className="ml-5 px-8 py-4 bg-yellow-400 text-indigo-800 font-semibold rounded-lg hover:bg-yellow-500 transition-all"
-          >
-            Explore Tutors
-          </Link>
+          <div className="flex items-center justify-center md:mt-1">
+            <Link
+              to="/tuition"
+              className="px-8 py-4 bg-yellow-400 text-indigo-800 font-semibold rounded-lg hover:bg-yellow-500 transition-all"
+            >
+              Explore Tuitions
+            </Link>
+            <Link
+              to="/tutors"
+              className="ml-5 px-8 py-4 bg-yellow-400 text-indigo-800 font-semibold rounded-lg hover:bg-yellow-500 transition-all"
+            >
+              Explore Tutors
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -135,8 +137,8 @@ const HomePage = () => {
       </section>
 
       {/* How It Works */}
-      <section className="bg-gray-50 py-16">
-        <div className="max-w-7xl mx-auto px-4 text-center space-y-6">
+      <section className="w-11/12 mx-auto bg-gray-50 py-16">
+        <div className="px-4 text-center space-y-6">
           <h2 className="text-3xl font-bold">
             How <span className="text-primary">It</span> Works
           </h2>
@@ -166,7 +168,7 @@ const HomePage = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="max-w-7xl mx-auto px-4 py-16">
+      <section className="w-11/12 mx-auto px-4 py-16">
         <h2 className="text-3xl font-bold mb-6 text-center">
           Why Choose <span className="text-primary">eTuitionBd</span>
         </h2>

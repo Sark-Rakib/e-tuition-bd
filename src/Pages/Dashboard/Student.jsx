@@ -48,7 +48,7 @@ const Student = () => {
   };
 
   const handleEdit = (id) => {
-    navigate(`/tuitions/${id}/edit`);
+    navigate(`/dashboard/tuition/${id}/edit`);
   };
   const handleView = (id) => {
     navigate(`/tuition-details/${id}`);
