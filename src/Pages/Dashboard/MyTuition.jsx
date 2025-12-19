@@ -3,10 +3,12 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../Hooks/useAuth";
 import Loading from "../../Component/Loading";
 import useAxiosSecure from "../../Hooks/useAxios";
+import { useNavigate } from "react-router";
 
 const MyTuition = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
 
   const { data: tuitions = [], isLoading } = useQuery({
     queryKey: ["tuitions", user?.email],
@@ -32,34 +34,11 @@ const MyTuition = () => {
           {tuitions.map((t) => (
             <div
               key={t._id}
-              className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow"
+              className="bg-white shadow-md rounded-lg p-5 hover:shadow-lg transition-shadow flex flex-col justify-between relative"
             >
-              <img
-                src={t.studentPhoto}
-                alt={t.studentName}
-                className="w-20 h-20 rounded-full mx-auto mb-3"
-              />
-              <h2 className="text-xl font-semibold mb-2 text-center">
-                {t.title}
-              </h2>
-              <p>
-                <b>Student Name:</b> {t.studentName}
-              </p>
-              <p>
-                <b>Class:</b> {t.studentClass}
-              </p>
-              <p>
-                <b>Subject:</b> {t.subject}
-              </p>
-              <p>
-                <b>Location:</b> {t.location}
-              </p>
-              <p>
-                <b>Salary:</b> {t.salary}
-              </p>
-
+              {/* Status Badge */}
               <span
-                className={`inline-block mt-2 px-2 py-1 rounded-full text-white text-sm ${
+                className={`inline-block px-3 py-1 rounded-full text-white text-sm absolute top-4 ${
                   t.status === "Approved"
                     ? "bg-green-500"
                     : t.status === "Rejected"
@@ -67,8 +46,71 @@ const MyTuition = () => {
                     : "bg-gray-400"
                 }`}
               >
-                {t.status}
+                {t.status || "Pending"}
               </span>
+
+              {/* Student Photo & Title */}
+              <div className="text-center mb-4">
+                <img
+                  src={t.studentPhoto || "https://i.pravatar.cc/150"}
+                  alt={t.studentName}
+                  className="w-24 h-24 rounded-full mx-auto mb-2 object-cover"
+                />
+                <h2 className="text-xl font-semibold">{t.title}</h2>
+              </div>
+
+              {/* Tuition Details */}
+              <div className="text-gray-700 space-y-1">
+                <p>
+                  <span className="font-medium">Student Name:</span>{" "}
+                  {t.studentName}
+                </p>
+                <p>
+                  <span className="font-medium">Class:</span> {t.studentClass}
+                </p>
+                <p>
+                  <span className="font-medium">Subject:</span> {t.subject}
+                </p>
+                <p>
+                  <span className="font-medium">Location:</span> {t.location}
+                </p>
+                <p>
+                  <span className="font-medium">Salary:</span> ${t.salary}
+                </p>
+                <p>
+                  <span className="font-medium">Days/Week:</span>{" "}
+                  {t.daysPerWeek}
+                </p>
+                <p>
+                  <span className="font-medium">Tutoring Time:</span>{" "}
+                  {t.tutoringTime}
+                </p>
+                <p>
+                  <span className="font-medium">Student Gender:</span>{" "}
+                  {t.studentGender}
+                </p>
+                <p>
+                  <span className="font-medium">Tutor Gender:</span>{" "}
+                  {t.tutorGender}
+                </p>
+                <p>
+                  <span className="font-medium">Requirements:</span>{" "}
+                  {t.requirements}
+                </p>
+                <p>
+                  <span className="font-medium">Contact:</span> {t.contactPhone}
+                </p>
+              </div>
+
+              {/* Edit Button Bottom Right */}
+              <div className="flex justify-end mt-4">
+                <button
+                  onClick={() => navigate(`/dashboard/tuition/${t._id}/edit`)}
+                  className="bg-blue-500 text-white w-20 px-4 py-2 rounded hover:bg-blue-600 text-sm"
+                >
+                  Edit
+                </button>
+              </div>
             </div>
           ))}
         </div>
