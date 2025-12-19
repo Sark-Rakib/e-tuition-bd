@@ -20,6 +20,7 @@ const AddTutors = () => {
       tutorName: user?.displayName,
       tutorEmail: user?.email,
       tutorPhoto: user?.photoURL,
+      role: "tutor",
       status: "Pending",
       postedAt: new Date().toISOString(),
     };

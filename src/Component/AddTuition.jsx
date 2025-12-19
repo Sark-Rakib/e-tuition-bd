@@ -44,6 +44,7 @@ const AddTuitionForm = () => {
       studentName: user?.displayName,
       studentEmail: user?.email,
       studentPhoto: user?.photoURL,
+      role: "student",
       status: "Pending", // Admin will approve
       postedAt: new Date().toISOString(),
     };
