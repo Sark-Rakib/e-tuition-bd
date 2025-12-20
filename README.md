@@ -1,16 +1,41 @@
-# React + Vite
+E-Tuition BD
+Project Name
+E-Tuition BD
+Purpose
+E-Tuition BD is an online tuition marketplace platform designed specifically for students and tutors in Bangladesh. It allows students to browse approved tuition postings, search by subject, sort by various criteria (e.g., newest first, budget high to low), and find suitable tutors easily. Logged-in users can post new tuition requests, manage their dashboard, and view payment history. This is a full-stack MERN (MongoDB, Express, React, Node.js) application aimed at connecting students with qualified tutors efficiently.
+Features
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+User authentication (Login / Registration)
+View paginated list of approved tuitions
+Search tuitions by subject and sort options (newest first, budget high-to-low, low-to-high)
+Authenticated users can add new tuition postings
+User dashboard and payment history tracking
+Fully responsive design (mobile, tablet, and desktop friendly)
+Data fetching and caching with Tanstack React Query
+Secure API calls using custom Axios instance
+Protected routes and role-based access
 
-Currently, two official plugins are available:
+Live URL
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Packages Used
+Frontend (Client - React)
 
-## React Compiler
+react
+react-dom
+react-router-dom
+react-hook-form
+@tanstack/react-query
+axios
+daisyui (or Tailwind CSS if used)
+tailwindcss
+Others: jwt-decode, sweetalert2, etc. (if used)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Backend (Server - Node.js/Express)
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+express
+mongoose (or mongodb)
+cors
+dotenv
+jsonwebtoken
+bcryptjs (for password hashing)
+Others: payment gateway integrations (e.g., Stripe) if implemented

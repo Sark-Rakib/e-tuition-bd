@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 const useAxios = axios.create({
-  baseURL: "http://localhost:4000",
+  baseURL: "https://e-tution-bd-server.vercel.app",
 });
 
 const useAxiosSecure = () => {
