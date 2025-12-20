@@ -1,7 +1,6 @@
 // src/components/TutorCard.jsx
 import React from "react";
 import { Link } from "react-router";
-import TutorPagination from "./TutorPagination";
 
 const TutorCard = ({ tutor }) => {
   const {
