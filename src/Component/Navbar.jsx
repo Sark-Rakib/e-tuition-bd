@@ -34,8 +34,8 @@ const Navbar = () => {
             <NavLink to="/">Home</NavLink>
             <NavLink to="/about">About Us</NavLink>
             <NavLink to="/contact">Contact</NavLink>
-            {user ? <NavLink to="/tuition">Tuitions</NavLink> : ""}
-            {user ? <NavLink to="/tutors">Tutors</NavLink> : ""}
+            {user ? <NavLink to="/tuition">Tuitions List</NavLink> : ""}
+            {user ? <NavLink to="/tutors">Tutors List</NavLink> : ""}
             {user ? (
               <Link className="btn btn-primary mr-2 mb-2" to="/add-tuition">
                 Add Tuition
@@ -59,8 +59,8 @@ const Navbar = () => {
           <NavLink to="/">Home</NavLink>
           <NavLink to="/about">About Us</NavLink>
           <NavLink to="/contact">Contact</NavLink>
-          {user ? <NavLink to="/tuition">Tuitions</NavLink> : ""}
-          {user ? <NavLink to="/tutors">Tutors</NavLink> : ""}
+          {user ? <NavLink to="/tuition">Tuitions List</NavLink> : ""}
+          {user ? <NavLink to="/tutors">Tutors List</NavLink> : ""}
         </div>
       </div>
       <div className="navbar-end">
