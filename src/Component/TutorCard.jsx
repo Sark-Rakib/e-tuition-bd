@@ -23,7 +23,6 @@ const TutorCard = ({ tutor }) => {
     status,
   } = tutor;
 
-  // তারিখ ফরম্যাট
   const formatDate = (dateString) => {
     if (!dateString) return "N/A";
     const date = new Date(dateString);
@@ -66,7 +65,7 @@ const TutorCard = ({ tutor }) => {
             </h2>
             <p>{role}</p>
             <p className="text-gray-600">{email}</p>
-            {phone && <p className="text-sm text-gray-500 mt-1">📞 {phone}</p>}
+            {phone && <p className="text-sm text-gray-500 mt-1"> {phone}</p>}
           </div>
         </div>
 

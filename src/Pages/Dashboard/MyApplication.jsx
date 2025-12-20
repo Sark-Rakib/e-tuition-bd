@@ -18,7 +18,7 @@ const MyApplication = () => {
       const res = await axiosSecure.get(`/applications?email=${user.email}`);
       return res.data;
     },
-    enabled: !!user?.email, // user loaded হলে চালাবে
+    enabled: !!user?.email,
   });
 
   if (isLoading) return <Loading />;

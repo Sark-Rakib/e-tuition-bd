@@ -10,8 +10,7 @@ import {
   FaLinkedinIn,
   FaYoutube,
 } from "react-icons/fa";
-import { SiX } from "react-icons/si"; // New X logo
-
+import { SiX } from "react-icons/si";
 const ContactUs = () => {
   const {
     register,
@@ -202,11 +201,6 @@ const ContactUs = () => {
                   <FaYoutube size={24} />
                 </a>
               </div>
-            </div>
-
-            {/* Mini Map (Optional - Replace with real iframe if you want) */}
-            <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-64 flex items-center justify-center text-gray-500">
-              <p>Google Map Embed Here (Optional)</p>
             </div>
           </motion.div>
         </div>

@@ -66,7 +66,7 @@ const HomePage = () => {
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {approvedTuition
-            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // sort by latest first
+            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
             .slice(0, 3)
             .map((tuition) => (
               <motion.div
@@ -103,7 +103,7 @@ const HomePage = () => {
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {approvedTutor
-            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // sort by latest first
+            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
             .slice(0, 3)
             .map((tutor) => (
               <motion.div

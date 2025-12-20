@@ -18,7 +18,7 @@ const DashboardLayout = () => {
   const handleLogOut = () => {
     logOut()
       .then(() => {
-        navigate("/"); // or navigate("/login")
+        navigate("/");
       })
       .catch((err) => {
         console.log(err.message);
@@ -175,7 +175,7 @@ const DashboardLayout = () => {
                   data-tip="My Profile"
                 >
                   {/* profile icon */}
-                  {/* <FaUserCircle className="text-lg" /> */}
+
                   <img
                     src={user?.photoURL}
                     alt="User"
