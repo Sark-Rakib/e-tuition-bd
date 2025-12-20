@@ -1,4 +1,3 @@
-E-Tuition BD
 Project Name
 E-Tuition BD
 Purpose
@@ -16,6 +15,7 @@ Secure API calls using custom Axios instance
 Protected routes and role-based access
 
 Live URL
+https://e-tuition-bd.netlify.app/
 
 Packages Used
 Frontend (Client - React)
