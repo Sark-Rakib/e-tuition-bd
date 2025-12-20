@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxios";
+import Loading from "../../Component/Loading";
 
 const PaymentHistory = () => {
   const axiosSecure = useAxiosSecure();
@@ -17,8 +18,7 @@ const PaymentHistory = () => {
     },
   });
 
-  if (isLoading)
-    return <p className="p-6 text-center text-gray-600">Loading payments...</p>;
+  if (isLoading) return <Loading></Loading>;
 
   if (isError)
     return (
