@@ -176,7 +176,7 @@ const Tuitions = () => {
                     onClick={() => setCurrentPage(page)}
                     className={`px-4 py-2 rounded-lg ${
                       currentPage === page
-                        ? "bg-[#CAEB66] font-bold"
+                        ? "bg-primary font-bold"
                         : "bg-gray-200"
                     }`}
                   >
