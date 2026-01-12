@@ -41,7 +41,7 @@ const ContactUs = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-4xl font-bold text-gray-800 mb-4">
-            Get in Touch With Us
+            Get in Touch <span className="text-primary">With Us</span>
           </h2>
           <p className="text-l text-gray-600 max-w-2xl mx-auto">
             Have questions? Need help posting a tuition? We're here 24/7 for
@@ -67,7 +67,7 @@ const ContactUs = () => {
                   type="text"
                   placeholder="Your Full Name"
                   {...register("name", { required: "Name is required" })}
-                  className="w-full px-5 py-4 rounded-xl border border-gray-300 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-100 transition-all outline-none"
+                  className="w-full px-5 py-4 text-black rounded-xl border border-gray-300 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-100 transition-all outline-none"
                 />
                 {errors.name && (
                   <p className="text-red-500 text-sm mt-1">
@@ -84,7 +84,7 @@ const ContactUs = () => {
                     required: "Email is required",
                     pattern: { value: /^\S+@\S+$/i, message: "Invalid email" },
                   })}
-                  className="w-full px-5 py-4 rounded-xl border border-gray-300 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-100 transition-all outline-none"
+                  className="w-full px-5 py-4 text-black rounded-xl border border-gray-300 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-100 transition-all outline-none"
                 />
                 {errors.email && (
                   <p className="text-red-500 text-sm mt-1">
@@ -98,7 +98,7 @@ const ContactUs = () => {
                   type="text"
                   placeholder="Subject (e.g. Tutor Verification, Payment Issue)"
                   {...register("subject", { required: "Subject is required" })}
-                  className="w-full px-5 py-4 rounded-xl border border-gray-300 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-100 transition-all outline-none"
+                  className="w-full px-5 py-4 text-black rounded-xl border border-gray-300 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-100 transition-all outline-none"
                 />
               </div>
 
@@ -107,7 +107,7 @@ const ContactUs = () => {
                   rows="5"
                   placeholder="Write your message here..."
                   {...register("message", { required: "Message is required" })}
-                  className="w-full px-5 py-4 rounded-xl border border-gray-300 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-100 transition-all outline-none resize-none"
+                  className="w-full px-5 py-4 text-black rounded-xl border border-gray-300 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-100 transition-all outline-none resize-none"
                 />
                 {errors.message && (
                   <p className="text-red-500 text-sm mt-1">
@@ -183,19 +183,19 @@ const ContactUs = () => {
               <h4 className="font-bold text-xl mb-4">Follow Us</h4>
               <div className="flex gap-4">
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/in/rakib-sarker-"
                   className="bg-indigo-600 text-white p-4 rounded-full hover:bg-indigo-700 transition"
                 >
                   <FaLinkedinIn size={24} />
                 </a>
                 <a
-                  href="#"
+                  href="https://x.com/Cap_tain01"
                   className="bg-black text-white p-4 rounded-full hover:bg-gray-800 transition"
                 >
                   <SiX size={24} />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.youtube.com/@rakibrecord"
                   className="bg-red-600 text-white p-4 rounded-full hover:bg-red-700 transition"
                 >
                   <FaYoutube size={24} />

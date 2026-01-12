@@ -115,7 +115,7 @@ const Student = () => {
   if (isLoading) return <Loading />;
 
   return (
-    <div className="p-8">
+    <div className="p-8 text-gray-400">
       <h1 className="text-3xl font-bold mb-6">
         All Tuitions ({tuitions.length})
       </h1>
@@ -124,7 +124,7 @@ const Student = () => {
       ) : (
         <div className="overflow-x-auto bg-white rounded-lg shadow">
           <table className="table table-zebra w-full">
-            <thead className="bg-gray-100">
+            <thead className="bg-gray-100 text-black">
               <tr>
                 <th>SL</th>
                 <th>Title</th>

@@ -40,13 +40,13 @@ const TuitionDetails = () => {
           alt={tuition.studentName}
           className="w-32 h-32 rounded-full object-cover mb-4 ring-4 ring-indigo-200"
         />
-        <h1 className="text-3xl font-bold">{tuition.studentName}</h1>
+        <h1 className="text-3xl text-black font-bold">{tuition.studentName}</h1>
         <p className="text-gray-600">{tuition.studentEmail}</p>
       </div>
 
       {/* Tuition Details Grid */}
       <div className="grid md:grid-cols-2 gap-6 mb-6">
-        <div className="space-y-2">
+        <div className="space-y-2 text-black">
           <p>
             <strong>Student Class:</strong> {tuition.studentClass}
           </p>
@@ -63,7 +63,7 @@ const TuitionDetails = () => {
             <strong>Days Per Week:</strong> {tuition.daysPerWeek}
           </p>
         </div>
-        <div className="space-y-2">
+        <div className="space-y-2 text-black">
           <p>
             <strong>Tutoring Time:</strong> {tuition.tutoringTime}
           </p>

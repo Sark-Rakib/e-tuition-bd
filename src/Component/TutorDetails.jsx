@@ -3,10 +3,12 @@ import { useParams, Link } from "react-router";
 import useAxiosSecure from "../Hooks/useAxios";
 import Loading from "./Loading";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import useAuth from "../Hooks/useAuth";
 
 const TutorDetails = () => {
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
   const [tutor, setTutor] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -54,13 +56,13 @@ const TutorDetails = () => {
           alt={tutor.tutorName}
           className="w-32 h-32 rounded-full object-cover mb-4 ring-4 ring-indigo-200"
         />
-        <h1 className="text-3xl font-bold">{tutor.tutorName}</h1>
+        <h1 className="text-3xl text-black font-bold">{tutor.tutorName}</h1>
         <p className="text-gray-600">{tutor.tutorEmail}</p>
       </div>
 
       {/* Details Grid */}
       <div className="grid md:grid-cols-2 gap-6 mb-6">
-        <div>
+        <div className="text-black">
           <p>
             <strong>Education:</strong> {tutor.education}
           </p>
@@ -74,7 +76,7 @@ const TutorDetails = () => {
             <strong>Subjects:</strong> {tutor.subjects}
           </p>
         </div>
-        <div>
+        <div className="text-black">
           <p>
             <strong>Location:</strong> {tutor.location}
           </p>
@@ -92,13 +94,13 @@ const TutorDetails = () => {
 
       {/* About Section */}
       <div className="mb-6">
-        <h2 className="text-2xl font-semibold mb-2">About Tutor</h2>
+        <h2 className="text-2xl text-black font-semibold mb-2">About Tutor</h2>
         <p className="text-gray-700">{tutor.about}</p>
       </div>
 
       {/* Contact */}
       <div className="mb-6">
-        <h2 className="text-2xl font-semibold mb-2">Contact</h2>
+        <h2 className="text-2xl text-black font-semibold mb-2">Contact</h2>
         <p className="text-gray-700">{tutor.contactPhone}</p>
       </div>
 
@@ -111,12 +113,16 @@ const TutorDetails = () => {
           <IoMdArrowRoundBack className="text-xl" />
           Back to Tutors
         </Link>
-        <button
-          onClick={handlePayment}
-          className="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-all"
-        >
-          Accept Tutor (Payment)
-        </button>
+        {user ? (
+          <button
+            onClick={handlePayment}
+            className="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-all"
+          >
+            Accept Tutor (Payment)
+          </button>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

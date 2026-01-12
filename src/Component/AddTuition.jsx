@@ -73,15 +73,15 @@ const AddTuitionForm = () => {
   return (
     <div className="max-w-4xl mx-auto p-6 lg:p-10">
       <div className="text-center mb-10">
-        <h1 className="text-4xl font-bold text-gray-800">Post a New Tuition</h1>
-        <p className="text-gray-600 mt-3">
+        <h1 className="text-4xl font-bold ">Post a New Tuition</h1>
+        <p className="text-gray-500 mt-3">
           Fill the form below to find your perfect tutor
         </p>
       </div>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-white rounded-3xl shadow-xl p-8 border border-indigo-100 space-y-7"
+        className="bg-white rounded-3xl text-black shadow-xl p-8 border border-indigo-100 space-y-7"
       >
         {/* student Name & Photo (Auto-filled) */}
         <div className="flex flex-col items-center gap-4 md:gap-6 md:flex-row bg-indigo-50 p-6 md:p-8 rounded-2xl shadow-lg">

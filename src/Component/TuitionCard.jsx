@@ -50,9 +50,7 @@ const TuitionCard = ({ tuition }) => {
         </div>
 
         {/* Title */}
-        <h2 className="card-title text-xl font-bold text-gray-800 line-clamp-2">
-          {title}
-        </h2>
+        <h2 className="card-title text-xl font-bold line-clamp-2">{title}</h2>
 
         {/* Student Info */}
         <div className="flex items-center gap-3 my-4">

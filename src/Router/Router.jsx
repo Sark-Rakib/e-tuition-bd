@@ -25,6 +25,9 @@ import EditTuition from "../Component/EditTuition";
 import EditTutor from "../Component/EditTutor";
 import MyTuition from "../Pages/Dashboard/MyTuition";
 import MyApplication from "../Pages/Dashboard/MyApplication";
+import TermService from "../Component/TermService";
+import Privacy from "../Component/Privacy";
+import DashboardHome from "../Pages/Dashboard/DashboardHome";
 
 export const router = createBrowserRouter([
   {
@@ -37,19 +40,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/tuition",
-        element: (
-          <PrivateRoute>
-            <Tuition></Tuition>
-          </PrivateRoute>
-        ),
+        element: <Tuition></Tuition>,
       },
       {
         path: "/tutors",
-        element: (
-          <PrivateRoute>
-            <Tutors></Tutors>
-          </PrivateRoute>
-        ),
+        element: <Tutors></Tutors>,
       },
       {
         path: "/about",
@@ -68,6 +63,14 @@ export const router = createBrowserRouter([
       {
         path: "/add-tutors",
         Component: AddTutors,
+      },
+      {
+        path: "/terms-service",
+        Component: TermService,
+      },
+      {
+        path: "/privacy-policy",
+        Component: Privacy,
       },
     ],
   },
@@ -89,6 +92,10 @@ export const router = createBrowserRouter([
     path: "/dashboard",
     Component: DashboardLayout,
     children: [
+      {
+        index: true,
+        Component: DashboardHome,
+      },
       {
         path: "/dashboard/student",
         element: (
@@ -145,19 +152,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "/tuition-details/:id",
-    element: (
-      <PrivateRoute>
-        <TuitionDetails></TuitionDetails>
-      </PrivateRoute>
-    ),
+    element: <TuitionDetails></TuitionDetails>,
   },
   {
     path: "/tutor-details/:id",
-    element: (
-      <PrivateRoute>
-        <TutorDetails></TutorDetails>
-      </PrivateRoute>
-    ),
+    element: <TutorDetails></TutorDetails>,
   },
   {
     path: "*",

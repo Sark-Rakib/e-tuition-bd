@@ -59,9 +59,7 @@ const TutorCard = ({ tutor }) => {
             </div>
           </div>
           <div>
-            <h2 className="card-title text-2xl font-bold text-gray-800">
-              {tutorName}
-            </h2>
+            <h2 className="card-title text-2xl font-bold ">{tutorName}</h2>
             <p>{role}</p>
             <p className="text-gray-600">{email}</p>
             {phone && <p className="text-sm text-gray-500 mt-1"> {phone}</p>}

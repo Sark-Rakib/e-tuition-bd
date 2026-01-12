@@ -1,5 +1,6 @@
 import { FaFacebookF, FaLinkedinIn, FaYoutube } from "react-icons/fa";
 import { SiX } from "react-icons/si"; // This is the official NEW X icon (not old Twitter)
+import { Link } from "react-router";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -21,25 +22,42 @@ const Footer = () => {
           {/* Quick Links */}
           <div>
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-3">
-              {[
-                "Home",
-                "Tuitions",
-                "Tutors",
-                "About Us",
-                "Contact",
-                "Privacy Policy",
-                "Terms of Service",
-              ].map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:text-pink-300 transition-colors duration-300 text-sm"
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
+            <ul className="flex flex-col space-y-3">
+              <Link to="/">
+                <span className="text-gray-300 hover:text-pink-300 transition-colors duration-300 text-sm">
+                  Home
+                </span>
+              </Link>
+              <Link to="/about">
+                <span className="text-gray-300 hover:text-pink-300 transition-colors duration-300 text-sm">
+                  About Us
+                </span>
+              </Link>
+              <Link to="/">
+                <span className="text-gray-300 hover:text-pink-300 transition-colors duration-300 text-sm">
+                  Contact
+                </span>
+              </Link>
+              <Link to="/">
+                <span className="text-gray-300 hover:text-pink-300 transition-colors duration-300 text-sm">
+                  Tuitions
+                </span>
+              </Link>
+              <Link to="/">
+                <span className="text-gray-300 hover:text-pink-300 transition-colors duration-300 text-sm">
+                  Tutors
+                </span>
+              </Link>
+              <Link to="/privacy-policy">
+                <span className="text-gray-300 hover:text-pink-300 transition-colors duration-300 text-sm">
+                  Privacy Policy
+                </span>
+              </Link>
+              <Link to="/terms-service">
+                <span className="text-gray-300 hover:text-pink-300 transition-colors duration-300 text-sm">
+                  Terms of Service
+                </span>
+              </Link>
             </ul>
           </div>
 
@@ -48,15 +66,15 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
             <ul className="space-y-3 text-sm text-gray-300">
               <li className="flex items-center gap-2">
-                <span className="font-medium">Email:</span>
+                <span className="font-medium">Email :</span>
                 etuitionbd@gmail.com
               </li>
               <li className="flex items-center gap-2">
-                <span className="font-medium">Phone:</span>
+                <span className="font-medium">Phone :</span>
                 +880 1745762857
               </li>
               <li className="flex items-center gap-2">
-                <span className="font-medium">Address:</span>
+                <span className="font-medium">Address :</span>
                 Dhaka, Bangladesh
               </li>
             </ul>
@@ -67,34 +85,34 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
             <div className="flex gap-4">
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/sarkrakib/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white/10 backdrop-blur-sm p-3 rounded-full hover:bg-pink-600 transition-all duration-300 hover:scale-110"
+                className="bg-white/10 backdrop-blur-sm p-3 rounded-full hover:bg-indigo-600 transition-all duration-300 hover:scale-110"
               >
                 <FaFacebookF size={20} />
               </a>
               <a
-                href="https://x.com"
+                href="https://x.com/Cap_tain01"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white/10 backdrop-blur-sm p-3 rounded-full hover:bg-pink-600 transition-all duration-300 hover:scale-110"
+                className="bg-white/10 backdrop-blur-sm p-3 rounded-full hover:bg-black transition-all duration-300 hover:scale-110"
               >
-                <SiX size={20} /> {/* Official NEW X Logo */}
+                <SiX size={20} />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/rakib-sarker-"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white/10 backdrop-blur-sm p-3 rounded-full hover:bg-pink-600 transition-all duration-300 hover:scale-110"
+                className="bg-white/10 backdrop-blur-sm p-3 rounded-full hover:bg-indigo-600 transition-all duration-300 hover:scale-110"
               >
                 <FaLinkedinIn size={20} />
               </a>
               <a
-                href="https://youtube.com"
+                href="https://www.youtube.com/@rakibrecord"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white/10 backdrop-blur-sm p-3 rounded-full hover:bg-pink-600 transition-all duration-300 hover:scale-110"
+                className="bg-white/10 backdrop-blur-sm p-3 rounded-full hover:bg-red-600 transition-all duration-300 hover:scale-110"
               >
                 <FaYoutube size={20} />
               </a>

@@ -44,15 +44,15 @@ const AddTutors = () => {
   return (
     <div className="max-w-4xl mx-auto p-6 lg:p-10">
       <div className="text-center mb-10">
-        <h1 className="text-4xl font-bold text-gray-800">Become a Tutor</h1>
-        <p className="text-gray-600 mt-3">
+        <h1 className="text-4xl font-bold">Become a Tutor</h1>
+        <p className="text-gray-500 mt-3">
           Create your tutor profile and start getting tuition requests
         </p>
       </div>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-white rounded-3xl shadow-xl p-8 border border-indigo-100 space-y-7"
+        className="bg-white rounded-3xl text-black shadow-xl p-8 border border-indigo-100 space-y-7"
       >
         {/* Tutor Name & Photo (Auto-filled) */}
         <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 bg-indigo-50 p-6 md:p-8 rounded-2xl shadow-md">
