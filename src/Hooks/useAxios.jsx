@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const useAxios = axios.create({
-  baseURL: "https://e-tution-bd-server.vercel.app",
+  baseURL: "https://e-tuition-bd-server.onrender.com",
 });
 
 const useAxiosSecure = () => {
